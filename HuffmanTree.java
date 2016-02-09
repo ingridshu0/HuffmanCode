@@ -36,7 +36,7 @@ public class HuffmanTree {
 	/**
 	 * returns root of initialized tree
 	 * @param p
-	 * @return root, which can be used to access the entire encoded tree
+	 * @return root, which can be used to access the entire initialized tree
 	 */
 	public HuffmanNode initializeTree(PriorityQueue<HuffmanNode> p)
 	{
