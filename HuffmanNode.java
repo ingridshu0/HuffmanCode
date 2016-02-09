@@ -1,4 +1,4 @@
-package HuffmanCode;
+//package HuffmanCode;
 
 /**
  * This HuffmanNode should behave like a normal TreeNode (e.g. have a left and right pointer), except that instead of containing 
