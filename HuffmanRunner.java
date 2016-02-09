@@ -63,11 +63,15 @@ public class HuffmanRunner {
 			System.out.println(queue.poll());
 		}*/
 		
-		// Test ENCODING
+		// Test INITIALIZING
 		// creates tree using the first HuffmanNode in queue as the root
 		HuffmanTree tree = new HuffmanTree(queue.peek());
-		tree.encode(queue);
-		System.out.println("ENCODED: " + tree.getRoot());
+		tree.initializeTree(queue);
+		System.out.println("INITIALIZED TREE: " + tree.getRoot());
+		
+		// Test ENCODING
+		System.out.println(tree.encode("Shells"));
+		System.out.println("ENCODED to DECODE: " + tree.decode(tree.encode("Shells")));
 		
 		// Test DECODING
 		// list values spell "Shells"

@@ -34,11 +34,11 @@ public class HuffmanTree {
 
 	
 	/**
-	 * returns root of encoded tree
+	 * returns root of initialized tree
 	 * @param p
 	 * @return root, which can be used to access the entire encoded tree
 	 */
-	public HuffmanNode encode(PriorityQueue<HuffmanNode> p)
+	public HuffmanNode initializeTree(PriorityQueue<HuffmanNode> p)
 	{
 		HuffmanNode node1;
 		HuffmanNode node2;
@@ -71,9 +71,51 @@ public class HuffmanTree {
 	
 	
 	/**
+	 * encodes String param into an ArrayList based on initialized String
+	 * @precondition tree has already been initialized
+	 * @precondition is possible to encode given the String used to initialize it
+	 * @param toEncode
+	 * @return ArrayList<Integer> of param toEncode
+	 */
+	public ArrayList<Integer> encode(String toEncode)
+	{
+		ArrayList<Integer> encoded = new ArrayList<Integer>();
+		String tempString;
+		HuffmanNode tempNode = root;
+		
+		while(toEncode.length() != 0)
+		{
+			tempString = toEncode.substring(0,1);
+			// check for presence of char (tempString) in left / right nodes. when present, add 0(L) or 1(R) to encoded
+			while(tempNode.isLeaf() == false)
+			{
+				if(tempNode.getLeft().getValue().contains(tempString))
+				{
+					encoded.add(0);
+					tempNode = tempNode.getLeft();
+				}
+				else if(tempNode.getRight().getValue().contains(tempString))
+				{
+					encoded.add(1);
+					tempNode = tempNode.getRight();
+				}
+			}
+			// keep doing this until isLeaf. then create substring of toEncode w/o first char and reset tempNode to root
+			if(tempNode.isLeaf())
+			{
+				toEncode = toEncode.substring(1);
+				tempNode = root;
+			}
+			 
+		}
+		
+		return encoded;
+	}
+	
+	/**
 	 * returns decoded message
-	 * precondition: tree has already been encoded
-	 * precondition: toDecode contains only binary values
+	 * @precondition tree has already been initialized
+	 * @precondition toDecode contains only binary values
 	 * @param toDecode, list of binary with 0 representing left node and 1 representing right node
 	 * @return decoded message
 	 */
