@@ -5,16 +5,23 @@ package HuffmanCode;
  * an Object, it will contain both a Character (named value) and an int (named count). Each should have an accessor and a modifier. 
  * Since you will be placing these HuffmanNodes into a PriorityQueue, they will also have to be Comparable. This comparison should 
  * be based on the value of the int. If the value is the same, the comparison should return equal (0). 
+ * 
  * @author ingrid
  *
  */
 public class HuffmanNode implements Comparable<HuffmanNode> {
 	
-	HuffmanNode right;
-	HuffmanNode left;
+	private HuffmanNode right;
+	private HuffmanNode left;
 	private String value;
+	// count = frequency
 	private int count;
 	
+	/**
+	 * Constructor
+	 * @param v
+	 * @param c
+	 */
 	public HuffmanNode(String v, int c)
 	{
 		value = v;
@@ -24,6 +31,14 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
 		right = null;
 	}
 	
+	
+	/**
+	 * Constructor for
+	 * @param v String value
+	 * @param c Frequency C
+	 * @param r
+	 * @param l
+	 */
 	public HuffmanNode(String v, int c, HuffmanNode r, HuffmanNode l)
 	{
 		value = v;
@@ -52,6 +67,27 @@ public class HuffmanNode implements Comparable<HuffmanNode> {
 	{
 		return count;
 	}
+	
+	
+	/**
+	 * returns left HuffmanNode
+	 * @return left HuffmanNode
+	 */
+	public HuffmanNode getLeft()
+	{
+		return left;
+	}
+	
+	
+	/**
+	 * returns right HuffmanNode
+	 * @return right HuffmanNode
+	 */
+	public HuffmanNode getRight()
+	{
+		return right;
+	}
+	
 	
 	//modifiers
 	/**
